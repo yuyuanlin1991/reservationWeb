@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'RoomList',
+  name: 'MeetingList',
   props: {
     msg: String
   }
