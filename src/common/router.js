@@ -11,7 +11,7 @@ import { createRouter,createWebHashHistory} from 'vue-router'
 // We'll talk about nested routes later.
 const routes = [
   { path: '/', component: Home },
-  { path: '/res/:resType', component: ResReservation },
+  { path: '/res/:resTypeId', component: ResReservation,props:true },
 ]
 
 // 3. Create the router instance and pass the `routes` option

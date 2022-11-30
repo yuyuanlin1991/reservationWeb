@@ -8,36 +8,13 @@
         @select="handleSelect"
       >
         <el-menu-item index="1">
-          <router-link to="/">首页</router-link></el-menu-item
-        >
-        <el-sub-menu index="2">
-          <template #title>预约类型</template>
-          <el-menu-item
-            v-for="item in reservaliontypes"
-            :key="item.reservaliontype"
-            :index="item.reservaliontype"
-            class="menu-popoer-item"
-          >
-            <router-link :to="'/res/' + item.reservaliontype">{{
-              item.reservationName
-            }}</router-link></el-menu-item
-          >
-        </el-sub-menu>
-        <el-menu-item index="3">
-          <router-link to="/info">通知公告</router-link></el-menu-item
-        >
-        <el-menu-item index="4"
-          ><router-link to="/myReservation">我的预约</router-link></el-menu-item
+          <router-link to="/">西湖大学资源预约一览表</router-link></el-menu-item
         >
       </el-menu>
     </div>
 
-    <div class="header-right">
-      <el-menu   mode="horizontal">
-        <el-menu-item >
-          <router-link to="/userInfo">    <el-avatar :size="50" :src="circleUrl" /></router-link>
-        </el-menu-item></el-menu
-      >
+    <div class="header-right el-menu">
+        <el-avatar :size="50" :src="circleUrl"></el-avatar>
     </div>
   </div>
   <!-- route outlet -->
@@ -46,7 +23,10 @@
 </template>
 
 <script>
+import "element-plus/dist/index.css";
+import { mapActions } from "vuex";
 import http from "./common/http";
+import logo from './assets/logo2.png'
 export default {
   name: "App",
   components: {},
@@ -54,16 +34,18 @@ export default {
     return {
       activeIndex: "1",
       reservaliontypes: [],
-      circleUrl:'',
-      
+      circleUrl: logo,
     };
   },
   computed: {},
   beforeCreate() {},
   created() {
-    this.getTypes();
+    console.log("----");
+    //this.getUser();
+    //this.getTypes();
   },
   methods: {
+    ...mapActions({ getUser: "setUser" }),
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
       this.activeIndex = key;
@@ -86,7 +68,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss">
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -108,6 +89,20 @@ a {
   }
   .header-right {
     width: 20%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-bottom: solid 1px var(--el-menu-border-color);
+    span,
+    a {
+      display: inline-block;
+    }
+    a {
+      margin: auto;
+    }
   }
+}
+
+.avater-container {
 }
 </style>

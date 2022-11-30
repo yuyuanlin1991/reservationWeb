@@ -6,7 +6,7 @@ axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded
 const http = axios.create({
     baseURL: 'http://localhost:3000',
     timeout: 1000,
-    headers: {'X-Custom-Header': 'foobar'}
+    headers: {'X-Custom-Header': 'test'}
   });
   http.interceptors.response.use(function (response) {
     // 归一化处理数据
